@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24E3DD6A438B7B42B5A7948A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 656347D718B6A9C7A7EB2D77 /* libPods.a */; };
 		77FEE4041CC9C13D0079363C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FEE4031CC9C13D0079363C /* main.m */; };
 		77FEE4071CC9C13D0079363C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FEE4061CC9C13D0079363C /* AppDelegate.m */; };
 		77FEE40A1CC9C13D0079363C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FEE4091CC9C13D0079363C /* ViewController.m */; };
@@ -14,6 +15,7 @@
 		77FEE40F1CC9C13D0079363C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FEE40E1CC9C13D0079363C /* Assets.xcassets */; };
 		77FEE4121CC9C13D0079363C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FEE4101CC9C13D0079363C /* LaunchScreen.storyboard */; };
 		77FEE41D1CC9C13E0079363C /* CircleBannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FEE41C1CC9C13E0079363C /* CircleBannerViewTests.m */; };
+		77FEE4291CC9C17B0079363C /* CircleBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FEE4281CC9C17B0079363C /* CircleBannerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05261EB72D4496D4A836AC76 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2B56D525556A5D23A285A39A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		656347D718B6A9C7A7EB2D77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FEE3FF1CC9C13D0079363C /* CircleBannerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircleBannerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FEE4031CC9C13D0079363C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77FEE4051CC9C13D0079363C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,6 +45,8 @@
 		77FEE4181CC9C13E0079363C /* CircleBannerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CircleBannerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FEE41C1CC9C13E0079363C /* CircleBannerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleBannerViewTests.m; sourceTree = "<group>"; };
 		77FEE41E1CC9C13E0079363C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77FEE4271CC9C17B0079363C /* CircleBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleBannerView.h; sourceTree = "<group>"; };
+		77FEE4281CC9C17B0079363C /* CircleBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleBannerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E3DD6A438B7B42B5A7948A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +68,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27D6CC0580109ECAC1E297CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05261EB72D4496D4A836AC76 /* Pods.debug.xcconfig */,
+				2B56D525556A5D23A285A39A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		77FEE3F61CC9C13D0079363C = {
 			isa = PBXGroup;
 			children = (
 				77FEE4011CC9C13D0079363C /* CircleBannerView */,
 				77FEE41B1CC9C13E0079363C /* CircleBannerViewTests */,
 				77FEE4001CC9C13D0079363C /* Products */,
+				27D6CC0580109ECAC1E297CB /* Pods */,
+				BD18262ABBDD220EFEB568C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +104,8 @@
 				77FEE4061CC9C13D0079363C /* AppDelegate.m */,
 				77FEE4081CC9C13D0079363C /* ViewController.h */,
 				77FEE4091CC9C13D0079363C /* ViewController.m */,
+				77FEE4271CC9C17B0079363C /* CircleBannerView.h */,
+				77FEE4281CC9C17B0079363C /* CircleBannerView.m */,
 				77FEE40B1CC9C13D0079363C /* Main.storyboard */,
 				77FEE40E1CC9C13D0079363C /* Assets.xcassets */,
 				77FEE4101CC9C13D0079363C /* LaunchScreen.storyboard */,
@@ -111,6 +132,14 @@
 			path = CircleBannerViewTests;
 			sourceTree = "<group>";
 		};
+		BD18262ABBDD220EFEB568C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				656347D718B6A9C7A7EB2D77 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77FEE4211CC9C13E0079363C /* Build configuration list for PBXNativeTarget "CircleBannerView" */;
 			buildPhases = (
+				41E2E129FF4D658EAEA3E672 /* Check Pods Manifest.lock */,
 				77FEE3FB1CC9C13D0079363C /* Sources */,
 				77FEE3FC1CC9C13D0079363C /* Frameworks */,
 				77FEE3FD1CC9C13D0079363C /* Resources */,
+				6ED65986EA263AF1CFC0D862 /* Embed Pods Frameworks */,
+				12223A7F6E0AA0468BBCDFAC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,11 +238,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12223A7F6E0AA0468BBCDFAC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41E2E129FF4D658EAEA3E672 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6ED65986EA263AF1CFC0D862 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		77FEE3FB1CC9C13D0079363C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77FEE4291CC9C17B0079363C /* CircleBannerView.m in Sources */,
 				77FEE40A1CC9C13D0079363C /* ViewController.m in Sources */,
 				77FEE4071CC9C13D0079363C /* AppDelegate.m in Sources */,
 				77FEE4041CC9C13D0079363C /* main.m in Sources */,
@@ -341,6 +422,7 @@
 		};
 		77FEE4221CC9C13E0079363C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05261EB72D4496D4A836AC76 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CircleBannerView/Info.plist;
@@ -352,6 +434,7 @@
 		};
 		77FEE4231CC9C13E0079363C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B56D525556A5D23A285A39A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CircleBannerView/Info.plist;
@@ -404,6 +487,7 @@
 				77FEE4231CC9C13E0079363C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77FEE4241CC9C13E0079363C /* Build configuration list for PBXNativeTarget "CircleBannerViewTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +496,7 @@
 				77FEE4261CC9C13E0079363C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
