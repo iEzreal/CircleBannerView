@@ -23,15 +23,16 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     NSMutableArray *urlArray = [[NSMutableArray alloc] initWithCapacity:4];
-    [urlArray addObject:@"http://img.taopic.com/uploads/allimg/120726/201994-120H623433555.jpg"];
-    [urlArray addObject:@"http://pic24.nipic.com/20120920/10361578_112230424175_2.jpg"];
+    [urlArray addObject:@"http://img5.imgtn.bdimg.com/it/u=2149796787,842171726&fm=206&gp=0.jpg"];
+    [urlArray addObject:@"http://files.jb51.net/file_images/photoshop/201008/2010082021104513.jpg"];
     [urlArray addObject:@"http://www.zjsyxx.com/upload/personpic/2007710144115.jpg"];
     [urlArray addObject:@"http://www.xxjxsj.cn/article/UploadPic/2009-10/2009101018545196251.jpg"];
     
-    _circleBannerView = [[CircleBannerView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 150)];
-    _circleBannerView.bannerType = CircleBannerTypeWeb;
+    _circleBannerView = [[CircleBannerView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 200)];
+    _circleBannerView.styleType = CircleBannerStyleTypeTitle;
+    _circleBannerView.resourceType = CircleBannerResourceTypeWeb;
     _circleBannerView.delegate = self;
-    _circleBannerView.imageURLArray = urlArray;
+    _circleBannerView.imageArray = urlArray;
     [self.view addSubview:_circleBannerView];
     
 }

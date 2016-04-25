@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, CircleBannerType) {
-    CircleBannerTypeWeb,       // 网络图片
-    CircleBannerTypeLocal,    //  本地图片
+typedef NS_ENUM(NSInteger, CircleBannerResourceType) {
+    CircleBannerResourceTypeWeb,       // 网络图片
+    CircleBannerResourceTypeLocal,    //  本地图片
+};
+
+typedef NS_ENUM(NSInteger, CircleBannerStyleType) {
+    CircleBannerStyleTypeNormal,  // 不带标题
+    CircleBannerStyleTypeTitle,   // 带标题
 };
 
 @class CircleBannerView;
@@ -22,9 +27,12 @@ typedef NS_ENUM(NSInteger, CircleBannerType) {
 
 @interface CircleBannerView : UIView
 
-@property(nonatomic, assign) CircleBannerType bannerType;
-@property(nonatomic, copy) NSArray *imageURLArray;
-@property(nonatomic, copy) NSArray *imageNameArray;
+@property(nonatomic, assign) CircleBannerStyleType styleType;
+@property(nonatomic, assign) CircleBannerResourceType resourceType;
+@property(nonatomic, copy) NSArray *imageArray;
+@property(nonatomic, copy) NSArray *titleArray;
+
+@property(nonatomic, assign) BOOL isAutoScroll; 
 
 @property(nonatomic, weak) id<CircleBannerViewDelegate> delegate;
 

@@ -22,6 +22,10 @@
 @property(nonatomic, strong) UITapGestureRecognizer *centerTapGesture;
 @property(nonatomic, strong) UITapGestureRecognizer *rightTapGesture;
 
+
+@property(nonatomic, strong) UIView *bottomBannerView;
+@property(nonatomic, strong) UILabel *titleLabel;
+
 @property(nonatomic, assign) NSInteger pageCount;
 
 @property(nonatomic, assign) NSInteger currentPageIndex;
@@ -53,7 +57,7 @@
     _scrollView.contentOffset = CGPointMake(w, 0); // 显示中间的
     [self addSubview:_scrollView];
     
-    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, h - 25, w, 20)];
+    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(w - 100, h - 25, 100, 20)];
     [self addSubview:_pageControl];
     
     _leftTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pageClickWithSender:)];
@@ -98,65 +102,89 @@
         _currentPageIndex = (_currentPageIndex + _pageCount - 1) % _pageCount;
     }
     _pageControl.currentPage = _currentPageIndex;
+    NSInteger leftPageIndex = (_currentPageIndex + _pageCount - 1) % _pageCount;
+    NSInteger rightPageIndex = (_currentPageIndex + 1) % _pageCount;
     
-    if (_bannerType == CircleBannerTypeWeb) {
+    // title 标题
+    if (_styleType == CircleBannerStyleTypeTitle) {
+        _titleLabel.text = _titleArray[_currentPageIndex];
+    }
+    
+    // 资源图片
+    if (_resourceType == CircleBannerResourceTypeWeb) {
         
-        [self loadPegeWebImage];
+        [self loadPegeWebImageWithLeftPageIndex:leftPageIndex
+                               currentPageIndex:_currentPageIndex
+                                 rightPageIndex:rightPageIndex];
     } else {
-    
-    }
-}
-
-
-- (void)loadPegeWebImage {
-    NSInteger currentPageIndex = _currentPageIndex;
-    NSInteger leftPageIndex = (_currentPageIndex + _pageCount - 1) % _pageCount;
-    NSInteger rightPageIndex = (_currentPageIndex + 1) % _pageCount;
-    
-    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:_imageURLArray[currentPageIndex]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    [_leftImageView sd_setImageWithURL:[NSURL URLWithString:_imageURLArray[leftPageIndex]]placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    [_rightImageView sd_setImageWithURL:[NSURL URLWithString:_imageURLArray[rightPageIndex]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
-}
-
-- (void)loadPageLocalImage {
-    NSInteger currentPageIndex = _currentPageIndex;
-    NSInteger leftPageIndex = (_currentPageIndex + _pageCount - 1) % _pageCount;
-    NSInteger rightPageIndex = (_currentPageIndex + 1) % _pageCount;
-    
-    _leftImageView.image = [UIImage imageNamed:_imageNameArray[leftPageIndex]];
-    _centerImageView.image = [UIImage imageNamed:_imageNameArray[currentPageIndex]];
-    _rightImageView.image = [UIImage imageNamed:_imageNameArray[rightPageIndex]];
-    
-    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
-}
-
-- (void)setBannerType:(CircleBannerType)bannerType {
-    _bannerType = bannerType;
-}
-
-- (void)setImageURLArray:(NSArray *)imageURLArray {
-    if (imageURLArray) {
-        _imageURLArray = imageURLArray;
-        _pageCount = [_imageURLArray count];
-        _pageControl.numberOfPages = _pageCount;
-        _currentPageIndex = 0;
-        [self loadPegeWebImage];
-
-    } else{
         
+        [self loadPageLocalImageWithLeftPageIndex:leftPageIndex
+                                 currentPageIndex:_currentPageIndex
+                                   rightPageIndex:rightPageIndex];
     }
 }
 
-- (void)setImageNameArray:(NSArray *)imageNameArray {
-    if (imageNameArray) {
-        _imageNameArray = imageNameArray;
-        _pageCount = [_imageURLArray count];
-        _pageControl.numberOfPages = _pageCount;
-        _currentPageIndex = 0;
-        [self loadPageLocalImage];
+- (void)loadPegeWebImageWithLeftPageIndex:(NSInteger)leftPageIndex currentPageIndex:(NSInteger)currentPageIndex rightPageIndex:(NSInteger)rightPageIndex {
+    [_leftImageView sd_setImageWithURL:[NSURL URLWithString:_imageArray[leftPageIndex]]placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:_imageArray[currentPageIndex]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+       [_rightImageView sd_setImageWithURL:[NSURL URLWithString:_imageArray[rightPageIndex]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
+
+}
+
+- (void)loadPageLocalImageWithLeftPageIndex:(NSInteger)leftPageIndex currentPageIndex:(NSInteger)currentPageIndex rightPageIndex:(NSInteger)rightPageIndex  {
+    _leftImageView.image = [UIImage imageNamed:_imageArray[leftPageIndex]];
+    _centerImageView.image = [UIImage imageNamed:_imageArray[currentPageIndex]];
+    _rightImageView.image = [UIImage imageNamed:_imageArray[rightPageIndex]];
+    [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0) animated:NO];
+}
+
+- (void)setStyleType:(CircleBannerStyleType)styleType {
+    _styleType = styleType;
+    if (_styleType == CircleBannerStyleTypeTitle) {
+        CGFloat w = self.frame.size.width;
+        CGFloat h = self.frame.size.height;
+        _bottomBannerView = [[UIView alloc] initWithFrame:CGRectMake(0, h - 30, w, 30)];
+        _bottomBannerView.backgroundColor = [UIColor blackColor];
+        _bottomBannerView.alpha = 0.5;
+        [self insertSubview:_bottomBannerView aboveSubview:_scrollView];
+        
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, h - 30, w - 120, 30)];
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.font = [UIFont systemFontOfSize:13];
+        _titleLabel.text = @"这是个title描述";
+        [self insertSubview:_titleLabel aboveSubview:_bottomBannerView];
     }
-    
+}
+
+- (void)setBannerType:(CircleBannerResourceType)resourceType {
+    _resourceType = resourceType;
+}
+
+- (void)setImageArray:(NSArray *)imageArray {
+    if (!imageArray) {
+        return;
+    }
+    _imageArray = imageArray;
+    _pageCount = [imageArray count];
+    _pageControl.numberOfPages = _pageCount;
+    _currentPageIndex = 0;
+    NSInteger leftPageIndex = (_currentPageIndex + _pageCount - 1) % _pageCount;
+    NSInteger rightPageIndex = (_currentPageIndex + 1) % _pageCount;
+    if (_resourceType == CircleBannerResourceTypeWeb) {
+        [self loadPegeWebImageWithLeftPageIndex:leftPageIndex
+                               currentPageIndex:_currentPageIndex
+                                 rightPageIndex:rightPageIndex];
+    } else {
+        [self loadPageLocalImageWithLeftPageIndex:leftPageIndex
+                                 currentPageIndex:_currentPageIndex
+                                   rightPageIndex:rightPageIndex];
+    }
+}
+
+- (void)setTitleArray:(NSArray *)titleArray {
+    _titleArray = titleArray;
+    _titleLabel.text = titleArray[_currentPageIndex];
 }
 
 
