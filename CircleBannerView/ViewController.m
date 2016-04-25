@@ -33,6 +33,7 @@
     _circleBannerView.resourceType = CircleBannerResourceTypeWeb;
     _circleBannerView.delegate = self;
     _circleBannerView.imageArray = urlArray;
+    _circleBannerView.titleArray = @[@"这是第一页", @"这是第二页", @"这是第三页", @"这是第四页"];
     [self.view addSubview:_circleBannerView];
     
 }
